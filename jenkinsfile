@@ -21,8 +21,14 @@ pipeline{
         stage("Sonarqube Analysis"){
             steps{
                 withSonarQubeEnv('sonar-server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=TetrisVersion1.0 \
-                    -Dsonar.projectKey=TetrisVersion1.0 '''
+                    sh ''' 
+                    $SCANNER_HOME/bin/sonar-scanner \
+                                -Dsonar.projectKey=tetris \
+                                -Dsonar.sources=. \
+                                -Dsonar.host.url=http://3.88.115.32:9000 \
+                                -Dsonar.login=sqp_355d7b1e3774fa6265b062316d2d64ec9614fff6 
+
+                                '''
                 }
             }
         }
