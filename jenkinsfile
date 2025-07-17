@@ -18,6 +18,7 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/anye-web/tetris.git'
             }
         }
+
         stage("Sonarqube Analysis"){
             steps{
                 withSonarQubeEnv('sonar-server') {
@@ -64,8 +65,8 @@ pipeline{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
                        sh "docker build -t tetrisv1 ."
-                       sh "docker tag tetrisv1 pro9/tetrisv1:latest "
-                       sh "docker push pro9/tetrisv1:latest "
+                       sh "docker tag tetrisv1 janohjr/tetrisv1:latest "
+                       sh "docker push janohjr/tetrisv1:latest "
                     }
                 }
             }
@@ -73,7 +74,7 @@ pipeline{
 
         stage("TRIVY"){
             steps{
-                sh "trivy image pro9/tetrisv1:latest > trivyimage.txt" 
+                sh "trivy image janohjr/tetrisv1:latest > trivyimage.txt" 
             }
         }
     }
