@@ -26,7 +26,7 @@ pipeline{
                     $SCANNER_HOME/bin/sonar-scanner \
                                 -Dsonar.projectKey=tetris \
                                 -Dsonar.sources=. \
-                                -Dsonar.host.url=http://3.88.115.32:9000 \
+                                -Dsonar.host.url=http://54.164.86.102:9000 \
                                 -Dsonar.login=sqp_355d7b1e3774fa6265b062316d2d64ec9614fff6 
 
                                 '''
